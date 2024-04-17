@@ -13,7 +13,7 @@ create table figure_skater
     id           integer primary key,
     fullname     varchar(255)                                                             not null,
     birthday     date                                                                     not null,
-    sex          varchar(1)                                                               not null,
+    sex          varchar(1) check ( sex in ('f', 'm') )                                   not null,
     skating_type varchar(12) check ( skating_type in ('single', 'pairs', 'ice dancing') ) not null,
 );
 
@@ -31,7 +31,7 @@ create table coach
     id           integer primary key,
     category_id  integer references category (id)                                         not null,
     fullname     varchar(255)                                                             not null,
-    sex          varchar(1)                                                               not null,
+    sex          varchar(1) check ( sex in ('f', 'm') )                                                            not null,
     birthdate    date                                                                     not null,
     skating_type varchar(12) check ( skating_type in ('single', 'pairs', 'ice dancing') ) not null
 );
@@ -60,4 +60,4 @@ create table medal
     competition_id integer references competition (id)                         not null,
     type           varchar(6) check ( type in ('golden', 'silver', 'bronze') ) not null,
     date           date check not null
-);
+        );
