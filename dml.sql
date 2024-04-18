@@ -1,10 +1,3 @@
-truncate table category cascade;
-truncate table coach cascade;
-truncate table competition cascade;
-truncate table figure_skater cascade;
-truncate table figure_skater_categories cascade;
-truncate table medal cascade;
-truncate table skater_coach cascade;
 
 insert into figure_skater(id, fullname, birthday, sex, skating_type)
 values (1, 'Медведева Евгения Армановна', '19-11-1999', 'f', 'single'),
