@@ -21,6 +21,7 @@ drop table if exists competition cascade;
 create table competition
 (
     id    integer primary key,
+    title varchar(255) not null,
     date  date         not null,
     venue varchar(255) not null,
 );
@@ -59,5 +60,4 @@ create table medal
     skater_id      integer references figure_skater (id)                       not null,
     competition_id integer references competition (id)                         not null,
     type           varchar(6) check ( type in ('golden', 'silver', 'bronze') ) not null,
-    date           date check not null
         );
