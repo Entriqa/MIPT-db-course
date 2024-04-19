@@ -3,12 +3,14 @@ FROM figure_skater
 JOIN figure_skater_categories ON figure_skater.id = figure_skater_categories.skater_id
 JOIN category ON figure_skater_categories.category_id = category.id
 WHERE category.title = 'Мастер спорта международного класса';
+
 -- Выведем всех мсмк
 
 SELECT fullname, COUNT(medal.skater_id) AS total_medals
 FROM figure_skater
 LEFT JOIN medal ON figure_skater.id = medal.skater_id
 GROUP BY fullname;
+
 -- Выведем сколько медалей у каждого из фигуристов
 
 SELECT fullname, birthday
