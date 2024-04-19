@@ -2,7 +2,7 @@ SELECT fullname
 FROM figure_skater
 JOIN figure_skater_categories ON figure_skater.id = figure_skater_categories.skater_id
 JOIN category ON figure_skater_categories.category_id = category.id
-WHERE categoriy.title = 'Мастер спорта международного класса';
+WHERE category.title = 'Мастер спорта международного класса';
 -- Выведем всех мсмк
 
 SELECT fullname, COUNT(medal.skater_id) AS total_medals
@@ -11,14 +11,14 @@ LEFT JOIN medal ON figure_skater.id = medal.skater_id
 GROUP BY fullname;
 -- Выведем сколько медалей у каждого из фигуристов
 
-SELECT fullname, birthdate
+SELECT fullname, birthday
 FROM figure_skater
-ORDER BY birthdate ASC
+ORDER BY birthday ASC
 LIMIT 1;
 
-SELECT fullname, birthdate
+SELECT fullname, birthday
 FROM figure_skater
-ORDER BY birthdate DESC
+ORDER BY birthday DESC
 LIMIT 1;
 
 -- Выведем самого маленького и самого взрослого фигуриста
@@ -64,16 +64,16 @@ SELECT coach.fullname AS coach_name,
 FROM coach
 JOIN skater_coach ON coach.id = skater_coach.coach_id
 JOIN medal ON skater_coach.skater_id = medal.skater_id
-WHERE medal.medal_type = 'golden'
+WHERE medal.type = 'golden'
 GROUP BY coach.fullname
 ORDER BY total_gold_medals DESC
 LIMIT 5;
 
 -- Выведем топ 5 тренеров - будем считать, чем больше золотых медлей - тем лучше
 
-SELECT fullname, birthdate
+SELECT fullname, birthday
 FROM figure_skater
-WHERE EXTRACT(MONTH FROM birthdate) IN (12, 1, 2);
+WHERE EXTRACT(MONTH FROM birthday) IN (12, 1, 2);
 
 -- Так как это зимний вид спорта, выведем всех фигуристов, у которых день рождения зимой
 
