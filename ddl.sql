@@ -14,7 +14,7 @@ create table figure_skater
     fullname     varchar(255)                                                             not null,
     birthday     date                                                                     not null,
     sex          varchar(1) check ( sex in ('f', 'm') )                                   not null,
-    skating_type varchar(12) check ( skating_type in ('single', 'pairs', 'ice dancing') ) not null,
+    skating_type varchar(12) check ( skating_type in ('single', 'pairs', 'ice dancing') ) not null
 );
 
 drop table if exists competition cascade;
@@ -23,7 +23,7 @@ create table competition
     id    integer primary key,
     title varchar(255) not null,
     date  date         not null,
-    venue varchar(255) not null,
+    venue varchar(255) not null
 );
 
 drop table if exists coach cascade;
@@ -50,7 +50,7 @@ create table figure_skater_categories
 (
     skater_id       integer references figure_skater (id) not null,
     category_id     integer references category (id)      not null,
-    assignment_date date check not null,
+    assignment_date date not null,
     primary key (skater_id, category_id)
 );
 
@@ -59,5 +59,5 @@ create table medal
 (
     skater_id      integer references figure_skater (id)                       not null,
     competition_id integer references competition (id)                         not null,
-    type           varchar(6) check ( type in ('golden', 'silver', 'bronze') ) not null,
+    type           varchar(6) check ( type in ('golden', 'silver', 'bronze') ) not null
         );
